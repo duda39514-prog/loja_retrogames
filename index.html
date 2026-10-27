@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Discos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 style="font-family:'ArcadeClassic', Times, serif;color: rgb(248, 164, 55);">Bem Vindo(a) ao </h1><h1 style="font-family:'ArcadeClassic', Times, serif;color: rgb(94, 191, 165);">Retro Games!!</h1>
+        <p style="font-family:'ArcadeClassic', Times, serif;">Venda de Jogos Antigos</p>
+        <p style="font-family:'ArcadeClassic', Times, serif;">Mate a nostalgia aqui com a gente!!</p>
+    </header>
+    <main class="container">
+        <div class="titulo-secao">
+            <div>
+                <h2 style="font-family:'ArcadeClassic', Times, serif;color: #f2bb05;">Nosso Catalogo</h2>
+                <p style="font-family:'ArcadeClassic', Times, serif;">Conheça os discos disponíveis</p>
+            </div>
+            <button id="btnCadastrar" type="button">+ Cadastrar <br> Disco</button>
+        </div>
+        <section id="listaDiscos" class="listaDiscos">
+            <p id="MensagemVazia" style="font-family:'ArcadeClassic', Times, serif;color: #d74e09;">Nenhum disco cadastrado ainda</p>
+        </section>
+    </main>
+    <dialog id="modalCadastro">
+        <h2>Novo Disco</h2>
+        <form id="formDisco">
+            <label for="album">Nome do Jogo</label>
+            <input type="text" id="album" required>
+            <label for="artista">Autor do Jogo</label>
+            <input type="text" id="artista" required>
+            <label for="genero">Gênero</label>
+            <input type="text" id="genero" required>
+            <label for="imagem">URL da imagem do Jogo</label>
+            <input type="url" id="imagem" placeholder="https://exemplo.com/capa.webp" required>
+            <label for="preco">Preço (R$)</label>
+            <input type="number" id="preco" min="0.01" step="0.01" required>
+            <div class="acoes">
+                <button type="button" id="btnCancelar" class="cancelar">Cancelar</button>
+                <button type="submit">Salvar disco</button>
+            </div>
+        </form>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+</html>
