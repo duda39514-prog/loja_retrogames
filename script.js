@@ -26,26 +26,27 @@ form.addEventListener("submit", (evento)=>{
     modal.close()
 })
 
-function criarCard(album, artista, genero, imagem, preco) {
-    console.log("Criando card...");
+function criarCard(album, artista, genero, imagem, preco){
     mensagemVazia.hidden = true;
-    const card = document.createElement("article");
-    card.classList.add("card-disco");
-    const imagemCapa = document.createElement("img");
-    imagemCapa.src = imagem;
-    imagemCapa.alt = "Capa de " + album;
-    const titulo = document.createElement("h3");
-    titulo.textContent = album;
-    const nomeArtista = document.createElement("p");
-    nomeArtista.textContent = "Autor: " + artista;
-    const nomeGenero = document.createElement("p");
+    const card = document.createElement("article")
+    card.classList.add("card-disco")
+    const capa = document.createElement("div")
+    capa.classList.add("capa")
+    const imagemCapa = document.createElement("img")
+    imagemCapa.src = imagem
+    capa.appendChild(imagemCapa)
+    const info = document.createElement("div")
+    info.classList.add("info-disco")
+    const titulo = document.createElement("h3")
+    titulo.textContent = album
+    const nomeArtista = document.createElement("p")
+    nomeArtista.textContent = "Artista: " + artista
+    const nomeGenero = document.createElement("p")
     nomeGenero.textContent = "Gênero: " + genero;
-    const valor = document.createElement("strong");
-    valor.textContent = preco.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
-    card.append(imagemCapa, titulo, nomeArtista, nomeGenero, valor);
-    lista.appendChild(card);
-    console.log("Card adicionado à página!");
+    const valor = document.createElement("strong")
+    valor.classList.add("preco")
+    valor.textContent = preco.toLocaleString("pt-BR",{style: "currency",currency:"BRL"})
+    info.append(titulo, nomeArtista, nomeGenero, valor)
+    card.append(capa, info)
+    lista.append(card)
 }
