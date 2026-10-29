@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS db_discoteca;
 USE db_discoteca;
 
