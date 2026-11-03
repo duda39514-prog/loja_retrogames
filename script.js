@@ -18,15 +18,12 @@ btnCancelar.addEventListener("click", () => {
     modal.close();
 });
 
-// Carregar jogos do banco de dados
+
+
+//Carregando as informações do BD(get)
 async function carregarJogos() {
     try {
         const resposta = await fetch(API_URL + '/listar');
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao buscar jogos");
-        }
-
         const jogos = await resposta.json();
 
         lista.innerHTML = "";
@@ -39,16 +36,11 @@ async function carregarJogos() {
 
         mensagemVazia.hidden = true;
 
+        // Renderizar os jogos
         jogos.forEach(jogo => {
             criarCard(
-                jogo.nome,
-                jogo.autor,
-                jogo.genero,
-                jogo.imagem_url,
-                jogo.preco
-            );
-        });
-
+                jogo.nome, jogo.autor, jogo.genero, jogo.imagem_url, jogo.preco)
+        })
     } catch (erro) {
         console.error("Erro ao carregar jogos:", erro);
         alert("Não foi possível conectar ao servidor");
@@ -60,13 +52,12 @@ form.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
     const novoJogo = {
-        nome: document.getElementById("Nome").value.trim(),
-        autor: document.getElementById("Autor").value.trim(),
+        nome: document.getElementById("nome").value.trim(),
+        autor: document.getElementById("autor").value.trim(),
         genero: document.getElementById("genero").value.trim(),
         imagem_url: document.getElementById("imagem").value.trim(),
         preco: Number(document.getElementById("preco").value)
     };
-
     try {
         const resposta = await fetch(API_URL + '/cadastrar', {
             method: "POST",
